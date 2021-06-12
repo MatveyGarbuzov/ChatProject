@@ -1,4 +1,4 @@
-﻿
+
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -188,7 +188,10 @@ void sendClientList(struct sockaddr_in sender) {
 
 /* Main Server Process */
 int main(int argc, char *argv[]) {
-
+    FILE *fp = fopen("log.txt", "w"); //clear log file
+    fclose(fp);
+    
+    
     int server_port, nbytes;
     int address_size = sizeof(struct sockaddr_in);
     struct sockaddr_in server_addr;
@@ -274,6 +277,11 @@ int main(int argc, char *argv[]) {
                 strcat(responseBuffer, requestBuffer);
 
                 printf("Message:\n[%s]\n", responseBuffer);
+                
+                FILE *fp = fopen("log.txt", "a");
+                fprintf(fp, "%s\n", responseBuffer);
+                fclose(fp);
+//
                 //go through entire linked list and echo back the message to all clients connected with proper username of the sender
                 broadcast(sender_addr, FALSE);  //sends message to all except sender
             }

@@ -1,4 +1,4 @@
-﻿/* client */
+/* client */
 
 #include <string.h>
 #include <sys/types.h>
@@ -148,7 +148,8 @@ void *receiver() {
 
         receiveBuffer[nbytes] = '\0';
         if(strcmp(ERROR, receiveBuffer) == 0) {
-            printf("Error: The username %s is already taken.\n", sendBuffer);
+//            printf("Error: The username %s is already taken.\n", sendBuffer);
+            printf("Error: This username is already taken.\n");
             done = TRUE;
             pthread_mutex_destroy(&mutexsum);
             pthread_exit(NULL);
