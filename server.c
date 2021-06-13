@@ -279,9 +279,23 @@ int main(int argc, char *argv[]) {
                 printf("Message:\n[%s]\n", responseBuffer);
                 
                 FILE *fp = fopen("log.txt", "a");
-                fprintf(fp, "%s\n", responseBuffer);
+                
+                // Save username and message in logText
+                char logText[BUF_SIZE];
+                int i, i1=0;
+                for (i = 5; i < strlen(responseBuffer)-1; ++i) {
+                    if (responseBuffer[i] == '[')
+                        break;
+                    logText[i1++] = responseBuffer[i];
+                }
+                logText[i] = '\0';
+                sprintf(logText, "%s: %s", logText, requestBuffer);
+                logText[strlen(logText)-1] = '\0';
+                
+                fprintf(fp, ">>%s\n", logText);
+                memset(logText, 0, sizeof logText);
                 fclose(fp);
-//
+                
                 //go through entire linked list and echo back the message to all clients connected with proper username of the sender
                 broadcast(sender_addr, FALSE);  //sends message to all except sender
             }

@@ -1,6 +1,5 @@
-[92mLesha[0m: Hi
-
-[95mMatvey[0m: Hello
-
-[95mMatvey[0m: my name is Matvey
-
+>>Matvey: Hello
+>>Lesha: Hi
+>>Lesha: What's your name?
+>>Matvey: my name is Matvey
+>>Lesha: fine.
