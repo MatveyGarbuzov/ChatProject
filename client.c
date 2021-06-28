@@ -151,7 +151,7 @@ void *sender() {
         pthread_mutex_unlock(&mutexsum);
     }
 }
- 
+//123
 void *receiver() {
     int nbytes;
  
