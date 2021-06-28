@@ -1,4 +1,6 @@
 /* client */
+//ghjkl
+//hjlkk
  
 #include <string.h>
 #include <sys/types.h>
